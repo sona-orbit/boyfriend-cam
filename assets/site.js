@@ -43,3 +43,11 @@
     });
   }
 })();
+
+// Demo cards: the viewfinder animation plays only while the card is on screen (CSS pauses it otherwise).
+(() => {
+  const cards = document.querySelectorAll('.demo');
+  if (!cards.length || !('IntersectionObserver' in window)) { cards.forEach((c) => c.classList.add('play')); return; }
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('play', e.isIntersecting)), { threshold: 0.35 });
+  cards.forEach((c) => io.observe(c));
+})();
