@@ -214,9 +214,7 @@ h2 { font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height: 1.3; margin
 .shot-card b { display: block; font-weight: 500; font-size: 1.0625rem; }
 .shot-card p { margin: 2px 0 8px; color: var(--text); font-size: .9375rem; line-height: 1.6; }
 .note { display: inline-flex; align-items: center; gap: 6px; font-size: .8125rem; color: var(--accent-ink); }
-.note .mi, .ticks .mi, .after .mi { width: 1rem; height: 1rem; }
-.ticks { display: grid; gap: 8px; }
-.ticks li { display: flex; align-items: center; gap: 12px; background: var(--card); border-radius: 14px; padding: 12px 14px; font-size: .9375rem; color: var(--ink); }
+.note .mi, .after .mi { width: 1rem; height: 1rem; }
 
 /* ---------- viewfinder on each demo card: clay picture + the app's own overlay (thin white lines,
    target ring, white dot, hint pill). Static state = lined up; the animation plays the "before" first. */
@@ -244,7 +242,10 @@ h2 { font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height: 1.3; margin
 .v-card span { display: flex; align-items: center; gap: 5px; font-size: .75rem; color: #8A6744; }
 .v-card .mi { width: .875rem; height: .875rem; }
 .v-card .mi .accent { stroke: #B08A66; } .v-card .mi .accent-fill { fill: #B08A66; }
-.v-plain { bottom: 6%; font-weight: 400; }
+.v-crop { position: absolute; border: 1.5px solid #fff; border-radius: 3px; box-shadow: 0 0 0 100vmax rgba(28, 22, 16, .42); }
+.vf-recompose .v-pill { top: 4%; bottom: auto; }
+.vf-recompose .v-cyc.l1, .vf-recompose .v-cyc.l2 { opacity: 0; }
+.chips.plans .chip em { font-style: normal; margin-left: 6px; opacity: .7; font-size: .8em; }
 .vf-cheat .v-layer.l1, .vf-cheat .v-layer.l2 { opacity: 0; }
 .tips li { border: 1px solid transparent; }
 
@@ -260,8 +261,14 @@ h2 { font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height: 1.3; margin
   .v-flash.a { animation-name: vf-flash; }
   .v-card.a { animation-name: vf-card; animation-timing-function: ease-out; }
   /* cheat sheet: three tips, 3 s each — before (stiff), then after (doing the little move) */
-  .vf-cheat .a, .tips li.a { animation-duration: 9s; animation-iteration-count: infinite; animation-play-state: paused; }
-  .demo.play .tips li.a { animation-play-state: running; }
+  .vf-cheat .a, .vf-recompose .a, .tips li.a, .plans .chip.a { animation-duration: 9s; animation-iteration-count: infinite; animation-play-state: paused; }
+  .demo.play .tips li.a, .demo.play .plans .chip.a { animation-play-state: running; }
+  .v-crop.a { animation-name: vf-crop; animation-timing-function: ease-in-out; }
+  .plans .chip.a { animation-name: vf-chip; }
+  .plans .chip.t1 { animation-delay: -6s !important; }
+  .plans .chip.t2 { animation-delay: -3s !important; }
+  .vf-recompose .v-cyc.l1, .vf-recompose .v-cyc.l2 { opacity: 1; }
+  .v-cyc.a { animation-name: vf-layer; animation-timing-function: linear; }
   .v-layer.a { animation-name: vf-layer; animation-timing-function: linear; }
   .v-layer .v-b.a { animation-name: vf-after; }
   .tips li.a { animation-name: vf-tip; }
@@ -277,6 +284,9 @@ h2 { font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height: 1.3; margin
 @keyframes vf-card { 0%, 28% { opacity: 0; transform: translateY(14px); } 38%, 94% { opacity: 1; transform: none; } 99%, 100% { opacity: 0; } }
 @keyframes vf-layer { 0%, 31% { opacity: 1; } 34.5%, 97% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes vf-after { 0%, 11% { opacity: 0; } 16%, 100% { opacity: 1; } }
+@keyframes vf-crop { 0%, 28% { left: 17%; top: 6%; width: 66%; height: 88%; } 36%, 61% { left: 26%; top: 7.5%; width: 72%; height: 67.5%; }
+  69%, 94% { left: 19%; top: 14.5%; width: 62%; height: 46.5%; } 100% { left: 17%; top: 6%; width: 66%; height: 88%; } }
+@keyframes vf-chip { 0%, 31% { background: var(--on-bg); color: var(--on-ink); border-color: var(--on-bg); } 34.5%, 100% { background: var(--card); color: var(--ink); border-color: var(--line); } }
 @keyframes vf-tip { 0%, 31% { border-color: var(--accent); } 34.5%, 100% { border-color: transparent; } }
 
 /* ---------- FAQ */
