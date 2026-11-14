@@ -151,3 +151,25 @@
     }));
   });
 })();
+
+// Intro video: muted loop plays only while on screen and only when motion is welcome; the button switches to the voiced cut.
+(() => {
+  const v = document.querySelector('.iv-v');
+  if (!v) return;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let voiced = false;
+  if (still) v.controls = true;
+  else if ('IntersectionObserver' in window) {
+    new IntersectionObserver((es) => es.forEach((e) => {
+      if (voiced) return;
+      if (e.isIntersecting) v.play().catch(() => { v.controls = true; }); else v.pause();
+    }), { threshold: 0.4 }).observe(v);
+  }
+  document.querySelector('.iv-sound').addEventListener('click', (e) => {
+    voiced = true;
+    v.src = v.dataset.sound; v.muted = false; v.loop = false; v.controls = true; v.currentTime = 0;
+    v.play().catch(() => {});
+    e.currentTarget.hidden = true;
+  });
+})();
+
