@@ -52,7 +52,7 @@
   cards.forEach((c) => io.observe(c));
 })();
 
-// Composition playground: 13 compositions. Autoplays while on screen (unless reduced motion); a tap stops it.
+// Composition playground: 13 compositions (23 with 1.1). Autoplays while on screen (unless reduced motion); a tap stops it.
 (() => {
   const pg = document.querySelector('.pg');
   if (!pg) return;
@@ -68,13 +68,34 @@
   const svgEl = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
   const line = (x1, y1, x2, y2, cls = 'v-line') => svgEl('path', { class: cls, d: `M${x1 * 90} ${y1 * 120}L${x2 * 90} ${y2 * 120}` });
 
+  const rectEl = (r, cls) => svgEl('rect', { class: cls, x: r[0] * 90, y: r[1] * 120, width: (r[2] - r[0]) * 90, height: (r[3] - r[1]) * 120, rx: 2 });
+  const tag = (e, st) => { e.classList.add(st === 'a' ? 'pg-sa' : 'pg-sb'); return e; };
   function drawGuides(it) {
     over.textContent = '';
     const g = it.guide;
     if (/thirds|space|half|small|detail|sky|table|fullbody/.test(g)) [1 / 3, 2 / 3].forEach((v) => { over.append(line(v, 0, v, 1), line(0, v, 1, v)); });
-    if (g === 'center' || g === 'frame') over.append(line(.5, 0, .5, 1));
+    if (g === 'center' || g === 'frame' || g === 'portrait') over.append(line(.5, 0, .5, 1));
     if (g === 'lines') it.a.lines.forEach(([p, q]) => over.append(line(p[0], p[1], q[0], q[1])));
     if (g === 'fullbody') over.append(line(.04, it.ring[1], .96, it.ring[1]));
+    if (g === 'pet') over.append(line(0, it.ring[1], 1, it.ring[1]));
+    if (g === 'fill') over.append(rectEl([.05, .05, .95, .95], 'v-line v-dash'));
+    if (g === 'halves' || g === 'reflection') over.append(line(0, .5, 1, .5));
+    if (g === 'pair') [1 / 3, 2 / 3].forEach((v) => over.append(line(v, 0, v, 1)));
+    // shapes that move between "not yet" (a) and "lined up" (b): both drawn, crossfaded by .go
+    ['a', 'b'].forEach((st) => {
+      const s = it[st];
+      if (g === 'diagonal' && s.lines) s.lines.forEach(([p, q]) => over.append(tag(line(p[0], p[1], q[0], q[1]), st)));
+      if (s.ax != null && Math.abs(s.ax - .5) > .02) over.append(tag(line(s.ax, 0, s.ax, 1, 'v-line v-dash'), st));
+      if (s.hy != null && Math.abs(s.hy - .5) > .02) over.append(tag(line(0, s.hy, 1, s.hy, 'v-line v-dash'), st));
+      if (s.rects) {
+        s.rects.forEach((r) => over.append(tag(rectEl(r, 'v-line v-dash'), st)));
+        if (g === 'triangle' && s.rects.length === 3) {
+          const c = s.rects.map((r) => `${(r[0] + r[2]) * 45} ${(r[1] + r[3]) * 60}`);
+          over.append(tag(svgEl('path', { class: 'v-line v-dash', d: `M${c[0]}L${c[1]}L${c[2]}Z` }), st));
+        }
+      }
+      if (s.fg) over.append(tag(rectEl(s.fg, 'v-line v-dash'), st));
+    });
     if (it.ring) over.append(svgEl('circle', { class: 'v-ring', cx: it.ring[0] * 90, cy: it.ring[1] * 120, r: 7 }));
   }
   function setShape(it, s) {
@@ -96,6 +117,8 @@
     $('#pg-stage').setAttribute('aria-labelledby', tabs[cur].id);
     $('.pg-name').textContent = it.name; $('.pg-principle').textContent = it.principle;
     $('.pg-hint span').textContent = it.hint; $('.pg-why').textContent = it.why; $('.pg-p1').textContent = it.hint;
+    $('.pg-when').textContent = it.when; $('.pg-hint').classList.toggle('after', !!it.after);
+    $('.pg-p2').textContent = it.after ? it.name : pg.dataset.now;
     clearTimeout(goTimer);
     vf.classList.remove('anim', 'go');
     imgA.srcset = it.sa; imgB.srcset = it.sb;
