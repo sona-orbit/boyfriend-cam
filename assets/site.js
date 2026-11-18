@@ -1,7 +1,7 @@
 // Language: the root (English) follows the browser language once; a saved choice wins.
 // A direct language URL stays where it is. Picking a language in the menu or footer remembers it.
 (() => {
-  const supported = ['en', 'zh-Hant', 'zh-Hans', 'ja', 'ko', 'th'];
+  const supported = ['en', 'zh-Hant', 'zh-Hans', 'ja', 'ko', 'th', 'es', 'de', 'fr', 'pt-BR'];
   const KEY = 'boyfriend-cam-language', STAY = 'boyfriend-cam-stay';
   const current = window.SITE_LOCALE;
   const page = window.SITE_PAGE || '';     // '', 'privacy/' or 'support/'
@@ -17,6 +17,10 @@
     if (/^ja/.test(b)) return 'ja';
     if (/^ko/.test(b)) return 'ko';
     if (/^th/.test(b)) return 'th';
+    if (/^es/.test(b)) return 'es';
+    if (/^de/.test(b)) return 'de';
+    if (/^fr/.test(b)) return 'fr';
+    if (/^pt/.test(b)) return 'pt-BR';
     return 'en';
   };
   if (current === 'en' && !stay) {
