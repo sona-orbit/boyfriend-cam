@@ -201,3 +201,42 @@
   });
 })();
 
+// Landscape / Object demos: a guide chip swaps the lines, the photo and the "when to use it" line.
+(() => {
+  document.querySelectorAll('.md-guides').forEach((md) => {
+    const chips = md.querySelectorAll('button.chip'), gs = md.querySelectorAll('.md-g'), imgs = md.querySelectorAll('.md-img');
+    const when = md.querySelector('.md-when');
+    chips.forEach((c) => c.addEventListener('click', () => {
+      const g = +c.dataset.g, pic = +c.dataset.pic;
+      chips.forEach((o) => { const on = o === c; o.classList.toggle('on', on); o.setAttribute('aria-pressed', String(on)); });
+      gs.forEach((x, i) => x.classList.toggle('sel', i === g));
+      imgs.forEach((x, i) => x.classList.toggle('sel', i === pic));
+      when.textContent = c.dataset.when;
+    }));
+  });
+})();
+
+// Filters demo: the pictures are the app's own filter output; pick a filter and a subject.
+(() => {
+  document.querySelectorAll('.md-looks').forEach((md) => {
+    const img = md.querySelector('.md-look'), dir = img.dataset.dir, name = md.querySelector('.md-lname'), grid = md.querySelector('.lk-grid');
+    const looks = md.querySelectorAll('.lk'), bases = md.querySelectorAll('[data-base]');
+    let base = 'p', look = md.querySelector('.lk.on').dataset.look;
+    const show = () => {
+      const u = `${dir}${base}-${look}`;
+      img.srcset = `${u}-480.webp 480w, ${u}-840.webp 840w`; img.src = `${u}-480.webp`;
+    };
+    looks.forEach((b) => b.addEventListener('click', () => {
+      look = b.dataset.look;
+      looks.forEach((o) => { const on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-pressed', String(on)); });
+      name.textContent = b.querySelector('span').textContent;
+      show();
+    }));
+    bases.forEach((b) => b.addEventListener('click', () => {
+      base = b.dataset.base;
+      bases.forEach((o) => { const on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-pressed', String(on)); });
+      grid.style.setProperty('--sprite', `url(${dir}${base}-thumbs.webp)`);
+      show();
+    }));
+  });
+})();
