@@ -458,3 +458,4 @@ h2 { font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height: 1.3; margin
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+@media (min-width: 640px) { .next-grid.four { grid-template-columns: repeat(2, 1fr); } }
