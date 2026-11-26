@@ -1,5 +1,62 @@
 [
  {
+  "slug": "landscape-food-photo-composition-guides",
+  "date": "2026-11-26",
+  "run": "/Users/johnkeng/Works/自製 Apple APP/官網SEO/部落格/boyfriend-cam/runs/2026-11-26-landscape-food-photo-composition-guides",
+  "langs": {
+   "zh-Hant": {
+    "title": "手機拍風景和美食怎麼構圖：18 種輔助線，各自什麼時候用",
+    "desc": "拍風景地平線總是歪、拍美食不知道該俯拍還是斜拍？整理手機構圖的 18 種輔助線：風景 10 種、美食和小物 8 種，每種寫清楚什麼時候用、要對準什麼。",
+    "hero_alt": "黏土插畫兩張：左邊是海邊步道，海平線在畫面上方三分之一；右邊從正上方拍桌面，咖啡、小花瓶和一塊蛋糕"
+   },
+   "zh-Hans": {
+    "title": "手机拍风景和美食怎么构图：18 种辅助线，各自什么时候用",
+    "desc": "拍风景地平线总是歪、拍美食不知道该俯拍还是斜拍？整理手机构图的 18 种辅助线：风景 10 种、美食和小物 8 种，每种写清楚什么时候用、要对准什么。",
+    "hero_alt": "黏土插画两张：左边是海边步道，海平线在画面上方三分之一；右边从正上方拍桌面，咖啡、小花瓶和一块蛋糕"
+   },
+   "en": {
+    "title": "How to Compose Landscape and Food Photos on iPhone: 18 Guide Lines",
+    "desc": "Landscape composition, food photos and flat lays on iPhone: 18 guide lines, from Level to Top-down table, with when to use each and what to line up.",
+    "hero_alt": "Two clay illustrations: a seaside path with the horizon along the upper third, and a top-down view of coffee, a small vase, and a slice of cake on a table"
+   },
+   "es": {
+    "title": "Cómo componer fotos de paisajes y comida en iPhone: 18 guías",
+    "desc": "Aprende a componer fotos de paisajes y comida en iPhone con 18 guías, de Nivel a Mesa desde arriba: cuándo usar cada una y qué alinear.",
+    "hero_alt": "Dos ilustraciones de arcilla: un camino junto al mar con el horizonte en el tercio superior y una vista desde arriba de un café, un jarrón pequeño y una porción de pastel sobre una mesa"
+   },
+   "de": {
+    "title": "Landschaft und Essen mit dem iPhone fotografieren: 18 Hilfen",
+    "desc": "18 Bildhilfen für Landschaften, Essen und Flatlays mit dem iPhone: von Wasserwaage bis Tisch von oben. Wann nutzen und worauf ausrichten.",
+    "hero_alt": "Zwei Illustrationen im Knetstil: ein Weg am Meer mit dem Horizont auf dem oberen Drittel und ein Blick von oben auf Kaffee, eine kleine Vase und ein Stück Kuchen auf einem Tisch"
+   },
+   "fr": {
+    "title": "Photos de paysage et de plats sur iPhone : 18 guides",
+    "desc": "Paysages, plats et photos vues du dessus sur iPhone : 18 guides, de Niveau à Table vue du dessus, avec quand les utiliser et quoi aligner.",
+    "hero_alt": "Deux illustrations en argile : un sentier en bord de mer avec l’horizon sur le tiers supérieur, et une vue du dessus d’un café, d’un petit vase et d’une part de gâteau sur une table"
+   },
+   "pt-BR": {
+    "title": "Como compor fotos de paisagens e comida no iPhone: 18 guias",
+    "desc": "Fotos de paisagens e comida no iPhone: 18 guias, de Nível a Mesa de cima, com dicas de quando usar cada um e o que alinhar.",
+    "hero_alt": "Duas ilustrações de argila: um caminho à beira-mar com o horizonte no terço superior e uma vista de cima de um café, um vaso pequeno e uma fatia de bolo sobre a mesa"
+   },
+   "ja": {
+    "title": "スマホで風景と料理を撮るときの構図は？18種類のガイドの使い方",
+    "desc": "風景の水平線が傾く、料理を真上から撮るか斜めから撮るか迷う。風景10種類、料理や小物8種類のガイドについて、使うときと合わせ方を紹介します。",
+    "hero_alt": "粘土風のイラスト2枚。左は海辺の遊歩道で、水平線は画面の上から3分の1の位置。右はテーブルを真上から撮った写真で、コーヒーと小さな花瓶、ケーキが一切れ写っています"
+   },
+   "ko": {
+    "title": "휴대폰으로 풍경과 음식 사진 구도 잡는 법: 가이드라인 18가지, 언제 쓸까?",
+    "desc": "풍경 사진의 지평선이 자꾸 기울고 음식은 탑뷰와 45도 중 어떻게 찍을지 고민되나요? 가이드라인 18가지의 쓸 때와 맞출 것을 정리했어요.",
+    "hero_alt": "클레이 일러스트 두 장: 왼쪽은 바닷가 산책로와 화면 위쪽 3분의 1 지점의 수평선, 오른쪽은 바로 위에서 찍은 커피, 작은 꽃병, 케이크 한 조각이 놓인 테이블"
+   },
+   "th": {
+    "title": "ถ่ายวิวและอาหารด้วยมือถือจัดองค์ประกอบยังไง: เส้นช่วยจัดภาพ 18 แบบ ใช้ตอนไหน",
+    "desc": "เส้นขอบฟ้าเอียง ถ่ายอาหารไม่รู้จะเลือกมุมบนหรือมุม 45°? รวมเส้นช่วยจัดภาพ 18 แบบ พร้อมวิธีใช้",
+    "hero_alt": "ภาพประกอบดินปั้นสองภาพ: ซ้ายเป็นทางเดินริมทะเล เส้นขอบทะเลอยู่ที่หนึ่งในสามจากด้านบนของภาพ ขวาเป็นโต๊ะที่ถ่ายจากด้านบน มีกาแฟ แจกันใบเล็ก และเค้กหนึ่งชิ้น"
+   }
+  }
+ },
+ {
   "slug": "couple-photo-poses-not-awkward",
   "date": "2026-11-21",
   "run": "/Users/johnkeng/Works/自製 Apple APP/官網SEO/部落格/boyfriend-cam/runs/2026-11-21-couple-photo-poses-not-awkward",
