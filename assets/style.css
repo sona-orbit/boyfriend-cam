@@ -503,3 +503,9 @@ h2 { font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem); line-height: 1.3; margin
   .lk-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) { .md-img, .md-g { transition: none; } }
+.real { border-top: 1px solid var(--line); padding: 2.75rem 0 1rem; }
+.real h3 { font-size: clamp(1.25rem, 1.1rem + .6vw, 1.5rem); margin: 0 0 1.1rem; }
+.real-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.real .sw img { border-radius: var(--radius); }
+.real .sw .chips { justify-content: center; }
+@media (max-width: 520px) { .real-grid { gap: 8px; } .real .sw .chip { height: 1.5rem; padding: 0 8px; font-size: .75rem; } }
